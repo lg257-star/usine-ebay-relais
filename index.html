@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Usine eBay · relais</title>
+<!-- Page relais : eBay exige une adresse HTTPS et refuse localhost.
+     eBay revient ici avec ?code=...&state=..., la page renvoie aussitôt vers le retour local du PC.
+     Rien n'est envoyé ailleurs, rien n'est enregistré. Changez PORT si vous changez « Port du retour local ». -->
+<style>
+  body{margin:0;min-height:100vh;display:grid;place-items:center;background:#e9e6ea;color:#25222d;font:15px/1.5 system-ui,sans-serif}
+  .c{background:#f2f0f2;border:1px solid #d9d4dc;border-radius:18px;padding:28px 32px;max-width:420px}
+  small{font:11px ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#5457c8}
+  h1{margin:.3em 0;font-size:22px;letter-spacing:-.02em} a{color:#5457c8}
+</style>
+<div class="c"><small>Usine eBay · relais</small><h1>Retour vers votre PC…</h1>
+<p>Si rien ne se passe, <a id="go" href="#">cliquez ici</a>. L'application doit être ouverte et la connexion démarrée.</p></div>
+<script>
+  const PORT = 8765;
+  const target = `http://127.0.0.1:${PORT}/ebay/retour` + location.search;
+  document.getElementById('go').href = target;
+  location.replace(target);
+</script>
+</html>
